@@ -1,3 +1,11 @@
+import os
+import telebot
+from telebot import types
+from datetime import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
+
+TOKEN = os.getenv("TELEGRAM_TOKEN")
+bot = telebot.TeleBot(TOKEN)
 rituali = {
     1: {
         "rits": """🌅 *1. dienas rīts*
@@ -411,6 +419,103 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 30 sekundes jūti savu krūtis un ļauj tai atslābt.
 """
     },
+
+# ============================
+#   RITUĀLI (šeit ieliec visu savu rituali = {...})
+# ============================
+
+rituali = {
+    # <-- ŠEIT IELIEC VISAS 1.–10. DIENAS, KO MĒS UZRAKSTĪJĀM -->
+}
+
+# ============================
+#   DIENAS NOTEIKŠANA
+# ============================
+
+def get_day():
+    day = datetime.now().day % 10
+    return 10 if day == 0 else day
+
+# ============================
+#   INLINE POGAS
+# ============================
+
+def main_menu():
+    keyboard = types.InlineKeyboardMarkup()
+    keyboard.add(
+        types.InlineKeyboardButton("🌅 Šodienas rīts", callback_data="rits"),
+        types.InlineKeyboardButton("🌙 Šodienas vakars", callback_data="vakars")
+    )
+    keyboard.add(
+        types.InlineKeyboardButton("💛 Dienas nodoms", callback_data="nodoms"),
+        types.InlineKeyboardButton("🌬 Elpošana", callback_data="elpa")
+    )
+    keyboard.add(
+        types.InlineKeyboardButton("✨ Maigs teikums", callback_data="teikums")
+    )
+    return keyboard
+
+# ============================
+#   STARTA KOMANDA
+# ============================
+
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(
+        message.chat.id,
+        "Sveika, Anda 🌿\nIzvēlies, ko vēlies saņemt:",
+        reply_markup=main_menu()
+    )
+
+# ============================
+#   INLINE POGU APSTRĀDE
+# ============================
+
+@bot.callback_query_handler(func=lambda call: True)
+def callback_handler(call):
+    day = get_day()
+
+    if call.data == "rits":
+        bot.send_message(call.message.chat.id, rituali[day]["rits"], parse_mode="Markdown")
+
+    elif call.data == "vakars":
+        bot.send_message(call.message.chat.id, rituali[day]["vakars"], parse_mode="Markdown")
+
+    elif call.data == "nodoms":
+        text = rituali[day]["rits"].split("*Nodoms*")[1].split("*")[0].strip()
+        bot.send_message(call.message.chat.id, f"💛 *Šodienas nodoms:*\n{text}", parse_mode="Markdown")
+
+    elif call.data == "elpa":
+        text = rituali[day]["rits"].split("*Elpošana*")[1].split("*")[0].strip()
+        bot.send_message(call.message.chat.id, f"🌬 *Elpošanas vingrinājums:*\n{text}", parse_mode="Markdown")
+
+    elif call.data == "teikums":
+        bot.send_message(call.message.chat.id, "✨ Šis ir tavs maigais brīdis.")
+
+# ============================
+#   AUTOMĀTISKĀ SŪTĪŠANA
+# ============================
+
+CHAT_ID = 941689479   # <-- Tavs chat ID
+
+def send_morning():
+    day = get_day()
+    bot.send_message(CHAT_ID, rituali[day]["rits"], parse_mode="Markdown")
+
+def send_evening():
+    day = get_day()
+    bot.send_message(CHAT_ID, rituali[day]["vakars"], parse_mode="Markdown")
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(send_morning, 'cron', hour=8, minute=0)
+scheduler.add_job(send_evening, 'cron', hour=20, minute=0)
+scheduler.start()
+
+# ============================
+#   PALAIŠANA
+# ============================
+
+bot.infinity_polling()
 
     
 
