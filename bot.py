@@ -645,7 +645,7 @@ def callback_handler(call):
         )
 
     elif call.data == "skens":
-        text = """🧘‍♀️ *Ķermeņa skenēšana*
+    text = """🧘‍♀️ *Ķermeņa skenēšana*
 
 Aizver acis uz brīdi.
 
@@ -659,7 +659,8 @@ Aizver acis uz brīdi.
 8. Sajūti seju.
 
 Ieelpo lēni. Izelpo vēl lēnāk."""
-        bot.send_message(call.message.chat.id, text, parse_mode="Markdown")
+    bot.send_message(call.message.chat.id, text, parse_mode="Markdown")
+
 
     elif call.data == "emocijas":
         keyboard = types.InlineKeyboardMarkup()
