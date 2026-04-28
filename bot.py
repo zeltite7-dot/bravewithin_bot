@@ -645,7 +645,9 @@ def callback_handler(call):
         )
 
     elif call.data == "skens":
-    text = """🧘‍♀️ *Ķermeņa skenēšana*
+    text = """
+🧘‍♀️ *Ķermeņa skenēšana*
+
 
 Aizver acis uz brīdi.
 
