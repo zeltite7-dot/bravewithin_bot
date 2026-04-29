@@ -17,10 +17,6 @@ bot = telebot.TeleBot(TOKEN)
 # ============================
 
 rituali = {
-    # ⬇⬇⬇ ŠEIT IELIEC VISAS SAVAS DIENAS ⬇⬇⬇
-
-    # 1: {
-    #     "rits": """rituali = {
     1: {
         "rits": """🌅 *1. dienas rīts*
 
@@ -48,7 +44,6 @@ Atlaid. Ienāc savā dienā ar vieglumu.
 *Dienas uzdevums*
 2 minūtes vienkārši jūti savu ķermeni.
 """,
-
         "vakars": """🌙 *1. dienas vakars*
 
 *Sveiciens*
@@ -75,7 +70,6 @@ Izelpo lēni kā vilnis, kas atgriežas jūrā.
 1 minūti sēdi klusumā.
 """
     },
-
     2: {
         "rits": """🌅 *2. dienas rīts*
 
@@ -102,7 +96,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 *Dienas uzdevums*
 Šodien pajautā sev: “Ko es šobrīd jūtu?”
 """,
-
         "vakars": """🌙 *2. dienas vakars*
 
 *Sveiciens*
@@ -127,7 +120,6 @@ Tad dziļa ieelpa un aizture 4–6 sekundes.
 Pasaki sev vienu maigu frāzi.
 """
     },
-
     3: {
         "rits": """🌅 *3. dienas rīts*
 
@@ -153,7 +145,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 30 sekundes klausies savu elpu.
 """,
-
         "vakars": """🌙 *3. dienas vakars*
 
 *Sveiciens*
@@ -178,8 +169,7 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 Atlaid plecus.
 """
     },
-}
-.    4: {
+    4: {
         "rits": """🌅 *4. dienas rīts*
 
 *Sveiciens*
@@ -205,7 +195,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 1 minūti jūti savas rokas — to siltumu, smagumu, klātbūtni.
 """,
-
         "vakars": """🌙 *4. dienas vakars*
 
 *Sveiciens*
@@ -230,7 +219,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 Atbalsti muguru pret sienu vai spilvenu un jūti, kā tā atslābst.
 """
     },
-
     5: {
         "rits": """🌅 *5. dienas rīts*
 
@@ -256,7 +244,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 *Dienas uzdevums*
 10 sekundes atslābini žokli.
 """,
-
         "vakars": """🌙 *5. dienas vakars*
 
 *Sveiciens*
@@ -281,7 +268,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 Jūti, kā galva atbalstās uz spilvena.
 """
     },
-
     6: {
         "rits": """🌅 *6. dienas rīts*
 
@@ -307,7 +293,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 1 minūti jūti savu kaklu — tā maigumu, tā atbalstu.
 """,
-
         "vakars": """🌙 *6. dienas vakars*
 
 *Sveiciens*
@@ -357,7 +342,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 30 sekundes jūti savu galvu — tās smagumu, tās klātbūtni.
 """,
-
         "vakars": """🌙 *7. dienas vakars*
 
 *Sveiciens*
@@ -382,7 +366,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 30 sekundes jūti savu pieri un ļauj tai atslābt.
 """
     },
-
     8: {
         "rits": """🌅 *8. dienas rīts*
 
@@ -408,7 +391,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 1 minūti jūti savu krūtis — tās kustību, tās siltumu.
 """,
-
         "vakars": """🌙 *8. dienas vakars*
 
 *Sveiciens*
@@ -433,7 +415,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 30 sekundes jūti savu krūtis un ļauj tai atslābt.
 """
     },
-
     9: {
         "rits": """🌅 *9. dienas rīts*
 
@@ -459,7 +440,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 30 sekundes jūti savus plecus un ļauj tiem noslīdēt.
 """,
-
         "vakars": """🌙 *9. dienas vakars*
 
 *Sveiciens*
@@ -484,7 +464,6 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 30 sekundes jūti savus plecus un ļauj tiem atslābt.
 """
     },
-
     10: {
         "rits": """🌅 *10. dienas rīts*
 
@@ -510,7 +489,6 @@ Tad dziļa ieelpa un aizture 6–8 sekundes.
 *Dienas uzdevums*
 1 minūti jūti savus gurnus — to smagumu, to klātbūtni.
 """,
-
         "vakars": """🌙 *10. dienas vakars*
 
 *Sveiciens*
@@ -534,14 +512,7 @@ Tad dziļa ieelpa un aizture 5–7 sekundes.
 *Vakara uzdevums*
 30 sekundes jūti savus gurnus un ļauj tiem atslābt.
 """
-    },
-..""",
-    #     "vakars": """..."""
-    # },
-
-    # ... līdz 10. dienai ...
-
-    # ⬆⬆⬆ TIKAI ŠO DAĻU AIZPILDI ⬆⬆⬆
+    }
 }
 
 # ============================
@@ -661,8 +632,6 @@ Aizver acis uz brīdi.
 Ieelpo lēni. Izelpo vēl lēnāk."""
         bot.send_message(call.message.chat.id, text, parse_mode="Markdown")
 
-
-
     elif call.data == "emocijas":
         keyboard = types.InlineKeyboardMarkup()
         keyboard.add(
@@ -722,3 +691,6 @@ scheduler.start()
 # ============================
 
 bot.infinity_polling()
+
+Voxtral Small 1.0
+
