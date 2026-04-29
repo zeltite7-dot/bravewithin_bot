@@ -692,5 +692,5 @@ scheduler.start()
 
 bot.infinity_polling()
 
-Voxtral Small 1.0
+
 
